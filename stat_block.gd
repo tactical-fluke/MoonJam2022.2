@@ -2,10 +2,12 @@ extends Resource
 
 class_name stat_block
 
+## REMINDER - If this changes, check item and absolute item to see if it should
+## be added as part of the update
+
 signal max_health_changed
 
 export (int) var max_health = 20
-export (int) var current_health = 20
 
 export (int) var max_speed = 150
 
