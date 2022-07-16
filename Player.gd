@@ -1,15 +1,17 @@
 extends KinematicBody2D
 
-export (float) var movement_speed = 40
+export (float) var base_movement_speed = 40
 export (float) var friction = 20
-export (float) var acceleration = 20
+export (float) var base_acceleration = 20
 
+export (Resource) var stat_block = StatBlock.new()
 
 var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	stat_block.max_speed = base_movement_speed
+	stat_block.acceleration = base_acceleration
 	
 # Gets the movement input. Modifies `velocity`
 func get_movement_input():
@@ -23,7 +25,9 @@ func get_movement_input():
 	if Input.is_action_pressed("movement_right"):
 		movement_keys_pressed += 1
 		
-	var effective_acceleration =  acceleration / movement_keys_pressed
+	var effective_acceleration = stat_block.acceleration
+	if movement_keys_pressed > 0:
+		stat_block.acceleration / movement_keys_pressed
 	
 	if Input.is_action_pressed("movement_up"):
 		velocity.y -= effective_acceleration
@@ -34,7 +38,7 @@ func get_movement_input():
 	if Input.is_action_pressed("movement_right"):
 		velocity.x += effective_acceleration
 		
-	velocity = velocity.clamped(movement_speed)
+	velocity = velocity.clamped(stat_block.max_speed)
 
 
 func _physics_process(delta):

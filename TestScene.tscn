@@ -1,14 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Item.tscn" type="PackedScene" id=3]
 
 [node name="root" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-movement_speed = 150.0
-friction = 10.0
-acceleration = 30.0
 
 [node name="Walls" type="Node" parent="."]
 
@@ -27,3 +23,11 @@ scale = Vector2( 12, 1.01025 )
 [node name="Wall4" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 0, 71 )
 scale = Vector2( 12, 1.01025 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+base_movement_speed = 150.0
+base_acceleration = 50.0
+
+[node name="Item" parent="." instance=ExtResource( 3 )]
+position = Vector2( -68, -30 )
+delta_max_speed = 200

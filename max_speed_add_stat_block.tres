@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://StatBlock.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+max_health = 0
+max_speed = 200
+damage_multiplier = 0.0
+acceleration = 0.0
