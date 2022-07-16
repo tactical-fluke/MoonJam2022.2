@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Item.gd" type="Script" id=1]
-[ext_resource path="res://max_speed_add_stat_block.tres" type="Resource" id=2]
+[ext_resource path="res://item resources/max_speed_add_stat_block.tres" type="Resource" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
