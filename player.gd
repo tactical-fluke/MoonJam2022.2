@@ -4,9 +4,14 @@ export (float) var friction = 20
 
 export (Resource) var stat_block
 
+var health = health_resource.new()
+
 var velocity = Vector2.ZERO
 
 var can_fire = true
+
+func _init():
+	health.connect("died", self, "handle_death")
 
 # Gets the movement input. Modifies `velocity`
 func get_movement_input():
@@ -64,8 +69,9 @@ func get_fire_direction() -> Vector2:
 		return fire_dir.normalized()
 
 # handles any projectiles that it does not own colliding with it
-func handle_projectile(projectile):
-	pass #TODO
+func handle_projectile(projectile, damage):
+	projectile.queue_free()
+	health.take_damage(damage)
 
 # Fires, using whichever firetype is currently equipped
 func fire():
@@ -81,3 +87,6 @@ func fire():
 func _on_FireTimer_timeout():
 	can_fire = true
 	$FireTimer.stop()
+
+func handle_death():
+	print("player died")
