@@ -1,18 +1,13 @@
 extends KinematicBody2D
 
-export (float) var base_movement_speed = 40
 export (float) var friction = 20
-export (float) var base_acceleration = 20
 
-export (Resource) var stat_block = StatBlock.new()
+export (Resource) var stat_block
 
 var velocity = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	stat_block.max_speed = base_movement_speed
-	stat_block.acceleration = base_acceleration
-	
+var can_fire = true
+
 # Gets the movement input. Modifies `velocity`
 func get_movement_input():
 	var movement_keys_pressed = 0
@@ -40,8 +35,49 @@ func get_movement_input():
 		
 	velocity = velocity.clamped(stat_block.max_speed)
 
-
+# General per physics tick process function
 func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, friction)
 	get_movement_input()
 	move_and_slide(velocity)
+
+# General per frame tick function
+func _process(delta):
+	if Input.is_action_pressed("fire"):
+		fire()
+
+# Gets the median fire direction of the wanted to fire projectile
+func get_fire_direction() -> Vector2:
+	var fire_dir = Vector2.ZERO
+	if Input.is_action_pressed("aim_up"):
+		fire_dir.y -= 1
+	if Input.is_action_pressed("aim_down"):
+		fire_dir.y += 1
+	if Input.is_action_pressed("aim_left"):
+		fire_dir.x -= 1
+	if Input.is_action_pressed("aim_right"):
+		fire_dir.x += 1
+		
+	if fire_dir.is_equal_approx(Vector2.ZERO):
+		return Vector2(0, -1)
+	else:
+		return fire_dir.normalized()
+
+# handles any projectiles that it does not own colliding with it
+func handle_projectile(projectile):
+	pass #TODO
+
+# Fires, using whichever firetype is currently equipped
+func fire():
+	if !can_fire:
+		return
+		
+	can_fire = false
+	$FireTimer.start(self.stat_block.fire_type.cooldown * self.stat_block.fire_cooldown_modifer)
+	var fire_direction = get_fire_direction()
+	stat_block.fire_type.begin_fire(fire_direction, self, self.owner)
+
+# signal handler for the fire timer timeout
+func _on_FireTimer_timeout():
+	can_fire = true
+	$FireTimer.stop()

@@ -25,8 +25,6 @@ position = Vector2( 0, 71 )
 scale = Vector2( 12, 1.01025 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-base_movement_speed = 150.0
-base_acceleration = 50.0
 
 [node name="Item" parent="." instance=ExtResource( 3 )]
 position = Vector2( -68, -30 )
