@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://linear_fire_type.gd" type="Script" id=1]
+[ext_resource path="res://linear_projectile.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+num_projectiles = 1
+maximum_angle = 0.0
+projectile_speed_modifier = 1.0
+projectile_type = ExtResource( 2 )
+dist_to_spawn_away = 20.0
+cooldown = 0.2
