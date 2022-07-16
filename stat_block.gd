@@ -11,7 +11,7 @@ export (int) var max_health = 20
 
 export (int) var max_speed = 150
 
-export (float) var damage_multiplier = 1
+export (float) var damage_modifier= 1
 export (float) var fire_cooldown_modifer = 1
 
 export (float) var acceleration = 20

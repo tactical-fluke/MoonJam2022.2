@@ -13,6 +13,6 @@ func _on_Area2D_body_entered(body):
 		player_stat_block.max_health += stat_block.max_health
 		player_stat_block.max_speed += stat_block.max_speed
 		player_stat_block.acceleration += stat_block.acceleration
-		player_stat_block.damage_multiplier += stat_block.damage_multiplier
+		player_stat_block.damage_modifier += stat_block.damage_modifier
 		player_stat_block.fire_cooldown_modifer += stat_block.fire_cooldown_modifer
 		queue_free()

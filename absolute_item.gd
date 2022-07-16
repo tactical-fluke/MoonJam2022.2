@@ -13,7 +13,7 @@ func _on_Area2D_body_entered(body):
 		if stat_block.max_health != 0: player_stat_block.max_health = stat_block.max_health
 		if stat_block.max_speed != 0: player_stat_block.max_speed = stat_block.max_speed
 		if stat_block.acceleration != 0: player_stat_block.acceleration = stat_block.acceleration
-		if stat_block.damage_multiplier != 1: player_stat_block.damage_multiplier = stat_block.damage_multiplier
+		if stat_block.damage_modifier != 1: player_stat_block.damage_modifier = stat_block.damage_modifier
 		if stat_block.fire_cooldown_modifier != 1: player_stat_block.fire_cooldown_modifer = stat_block.fire_cooldown_modifer
 		if stat_block.fire_type != null: player_stat_block.fire_type = stat_block.fire_type
 		

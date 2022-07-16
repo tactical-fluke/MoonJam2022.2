@@ -4,7 +4,7 @@ var velocity = Vector2.ZERO
 
 var projectile_owner: Node
 
-export (int) var damage = 4
+export (int) var damage = 4 ## INTERFACE TYPE
 
 ## Projectile type
 ## This is what gets actually fired by the player, and interacts with walls/enemies/players etc.
