@@ -13,6 +13,9 @@ var can_fire = true
 func _init():
 	health.connect("died", self, "handle_death")
 
+func _ready():
+	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
+
 # Gets the movement input. Modifies `velocity`
 func get_movement_input():
 	var movement_keys_pressed = 0
@@ -81,7 +84,8 @@ func fire():
 	can_fire = false
 	$FireTimer.start(self.stat_block.fire_type.cooldown * self.stat_block.fire_cooldown_modifer)
 	var fire_direction = get_fire_direction()
-	stat_block.fire_type.begin_fire(fire_direction, self, self.owner)
+	var damage_modifier = get_damage_modifer()
+	stat_block.fire_type.begin_fire(fire_direction, self, self.owner, damage_modifier)
 
 # signal handler for the fire timer timeout
 func _on_FireTimer_timeout():
@@ -90,3 +94,14 @@ func _on_FireTimer_timeout():
 
 func handle_death():
 	print("player died")
+
+func handle_max_health_changed():
+	health.set_health(stat_block.max_health)
+
+func get_damage_modifer() -> float:
+	var damage_modifier = stat_block.damage_modifier
+	for child in get_children():
+		if child.has_method("adjust_damage_modifier"):
+			damage_modifier = child.adjust_damage_modifier(damage_modifier)
+	
+	return damage_modifier

@@ -18,23 +18,24 @@ export var cooldown = 0.2; #INTERFACE TYPE
 # Called when firing begins
 # Should be considered an interface call, and should be implemented on other types
 # of firing patterns
-func begin_fire(median_dir: Vector2, owner, world_owner):
+func begin_fire(median_dir: Vector2, owner, world_owner, damage_modifer: float):
 	var angle_per_shot = maximum_angle / num_projectiles
 	var angle = -maximum_angle / 2
 	
 	if angle == 0:
-		fire(median_dir.normalized(), owner, world_owner)
+		fire(median_dir.normalized(), owner, world_owner, damage_modifer)
 		return
 	
 	while angle < maximum_angle / 2:
 		var velocity = median_dir.rotated(deg2rad(angle))
-		fire(velocity, owner, world_owner)
+		fire(velocity, owner, world_owner, damage_modifer)
 		angle += angle_per_shot
 
 # instantiates the projectile
-func fire(velocity, owner, world_owner):
+func fire(velocity, owner, world_owner, damage_modifier: float):
 	var projectile = projectile_type.instance()
 	projectile.transform = owner.transform.translated(velocity.normalized() * dist_to_spawn_away)
 	world_owner.add_child(projectile)
 	projectile.set_velocity(velocity * projectile_speed_modifier)
 	projectile.set_owner(owner)
+	projectile.damage *= damage_modifier
