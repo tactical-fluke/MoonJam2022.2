@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="MoonJam2022.2"
+config/description="The MoonMoon Game Jam 2022 H2 entry from team \"Some Thoughts, Head Mostly Empty\""
 config/icon="res://icon.png"
 
 [input]
