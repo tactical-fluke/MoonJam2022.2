@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://absolute_item.gd" type="Script" id=1]
+[ext_resource path="res://item resources/max_speed_add_stat_block.tres" type="Resource" id=1]
+[ext_resource path="res://items/item.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0.709804, 0, 1, 1, 0, 0, 0, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
 
-[node name="AbsoluteItem" type="Node2D"]
-script = ExtResource( 1 )
+[node name="Item" type="Node2D"]
+script = ExtResource( 2 )
+stat_block = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 

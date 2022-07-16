@@ -1,19 +1,18 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://item.gd" type="Script" id=1]
-[ext_resource path="res://item resources/max_speed_add_stat_block.tres" type="Resource" id=2]
+[ext_resource path="res://items/effect_item.gd" type="Script" id=1]
+[ext_resource path="res://effects/crit_effect.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 1 )
+[sub_resource type="OpenSimplexNoise" id=2]
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="NoiseTexture" id=3]
+noise = SubResource( 2 )
 
-[node name="Item" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-stat_block = ExtResource( 2 )
+effect_scene = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -21,7 +20,8 @@ stat_block = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.00976562, 20 )
+position = Vector2( 9.53674e-07, 0 )
+scale = Vector2( 0.0390625, 0.0390625 )
 texture = SubResource( 3 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
