@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 max_health = 20
+current_health = 20
 max_speed = 150
 damage_multiplier = 1.0
 fire_cooldown_modifer = 1.0

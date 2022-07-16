@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "health_resource",
+"language": "GDScript",
+"path": "res://health_resource.gd"
+}, {
+"base": "Resource",
 "class": "linear_fire_type",
 "language": "GDScript",
 "path": "res://linear_fire_type.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://stat_block.gd"
 } ]
 _global_script_class_icons={
+"health_resource": "",
 "linear_fire_type": "",
 "stat_block": ""
 }

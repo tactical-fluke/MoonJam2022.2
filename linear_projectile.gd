@@ -4,6 +4,8 @@ var velocity = Vector2.ZERO
 
 var projectile_owner: Node
 
+export (int) var damage = 4
+
 ## Projectile type
 ## This is what gets actually fired by the player, and interacts with walls/enemies/players etc.
 
@@ -27,4 +29,4 @@ func set_owner(new_owner):
 # handles any collisions that occur
 func handle_collision(collision: KinematicCollision2D):
 	if collision.collider_id != projectile_owner.get_instance_id() && collision.collider.is_in_group("projectile handler"):
-		collision.collider.handle_projectile(self)
+		collision.collider.handle_projectile(self, damage)
