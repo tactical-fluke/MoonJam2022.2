@@ -10,11 +10,10 @@ var velocity = Vector2.ZERO
 
 var can_fire = true
 
-func _init():
-	health.connect("died", self, "handle_death")
-
 func _ready():
 	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
+	health.init_health(stat_block.max_health)
+	health.connect("died", self, "handle_death")
 
 # Gets the movement input. Modifies `velocity`
 func get_movement_input():
@@ -74,6 +73,10 @@ func get_fire_direction() -> Vector2:
 # handles any projectiles that it does not own colliding with it
 func handle_projectile(projectile, damage):
 	projectile.queue_free()
+	take_damage(damage)
+
+
+func take_damage(damage):
 	health.take_damage(damage)
 
 # Fires, using whichever firetype is currently equipped

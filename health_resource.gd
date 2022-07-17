@@ -2,9 +2,12 @@ extends Resource
 
 class_name health_resource
 
-var health setget set_health
+var health = 1 setget set_health
 
 signal died
+
+func init_health(start_health):
+	health = start_health
 
 func set_health(new_health):
 	health = new_health

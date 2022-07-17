@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://enemies/base_enemy.gd" type="Script" id=1]
+[ext_resource path="res://enemies/attack patterns/circle_attack_pattern.gd" type="Script" id=2]
+[ext_resource path="res://enemies/basic_enemy_stat_block.tres" type="Resource" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 0, 0, 1, 0.431373, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[node name="BaseEnemy" type="KinematicBody2D" groups=["Enemy", "projectile handler"]]
+script = ExtResource( 1 )
+stat_block = ExtResource( 3 )
+attack_pattern = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -9.53674e-07, 0 )
+scale = Vector2( 0.00976562, 20 )
+texture = SubResource( 3 )
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
