@@ -5,6 +5,8 @@
 [ext_resource path="res://items/item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://items/Torch.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Textures/background.png" type="Texture" id=5]
+[ext_resource path="res://enemies/base_enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://area_trigger.tscn" type="PackedScene" id=5]
 
 [node name="root" type="Node2D"]
 
@@ -27,6 +29,7 @@ position = Vector2( 0, 71 )
 scale = Vector2( 12, 1.01025 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -59, 36 )
 
 [node name="Item" parent="." instance=ExtResource( 3 )]
 position = Vector2( -68, -30 )
@@ -45,3 +48,10 @@ texture = ExtResource( 5 )
 
 [node name="Torch2" parent="." instance=ExtResource( 4 )]
 position = Vector2( -61, 36 )
+
+[node name="BaseEnemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 65, -45 )
+area_trigger = NodePath("../Area2D")
+
+[node name="Area2D" parent="." instance=ExtResource( 5 )]
+scale = Vector2( 9.6, 1 )

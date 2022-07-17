@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "Circle_Attack_Pattern",
+"language": "GDScript",
+"path": "res://enemies/attack patterns/circle_attack_pattern.gd"
+}, {
+"base": "Resource",
 "class": "health_resource",
 "language": "GDScript",
 "path": "res://health_resource.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://stat_block.gd"
 } ]
 _global_script_class_icons={
+"Circle_Attack_Pattern": "",
 "health_resource": "",
 "linear_fire_type": "",
 "stat_block": ""
