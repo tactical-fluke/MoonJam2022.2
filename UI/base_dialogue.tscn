@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/dialogue.gd" type="Script" id=1]
+[ext_resource path="res://temp music/Bonk.mp3" type="AudioStream" id=2]
+
+[node name="Dialogue" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+lines = [ "This is a story", "All about how", "my life got flipped", "turned upside down" ]
+
+[node name="NextLineTimer" type="Timer" parent="."]
+
+[node name="NextCharacterTimer" type="Timer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.25
+anchor_top = 0.75
+anchor_right = 0.75
+anchor_bottom = 0.95
+
+[node name="Label" type="Label" parent="PanelContainer"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 505.0
+margin_bottom = 113.0
+
+[node name="CharacterNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Sound Effects"
+
+[connection signal="timeout" from="NextLineTimer" to="." method="_on_NextLineTimer_timeout"]
+[connection signal="timeout" from="NextCharacterTimer" to="." method="_on_NextCharacterTimer_timeout"]
