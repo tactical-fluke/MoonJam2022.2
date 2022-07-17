@@ -10,10 +10,15 @@ var velocity = Vector2.ZERO
 
 var can_fire = true
 
+var torch_lit = false
+var torch_timer = Timer.new()
+
 func _ready():
 	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
 	health.init_health(stat_block.max_health)
 	health.connect("died", self, "handle_death")
+  init_torch()
+
 
 # Gets the movement input. Modifies `velocity`
 func get_movement_input():
@@ -108,3 +113,26 @@ func get_damage_modifer() -> float:
 			damage_modifier = child.adjust_damage_modifier(damage_modifier)
 	
 	return damage_modifier
+
+func init_torch():
+	toggle_torch(0)
+	
+func toggle_torch(state):
+	if state == 1:
+		torch_lit = true
+		$TorchLight2D.set_visible(true)
+		torch_timer.connect("timeout",self,"snuff_torch")
+		torch_timer.wait_time = 3
+		torch_timer.one_shot = true
+		add_child(torch_timer)
+		torch_timer.start()		
+	elif state == 0:
+		torch_lit = false
+		$TorchLight2D.set_visible(false)
+		
+func snuff_torch():
+	print("LULE")
+	torch_lit = false
+	$TorchLight2D.set_visible(false)
+	
+
