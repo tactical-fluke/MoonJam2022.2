@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/brainstorming5.mp3-558d5459f8508dcd1880508805ad84b4.mp3str"
+
+[deps]
+
+source_file="res://temp music/brainstorming5.mp3"
+dest_files=[ "res://.import/brainstorming5.mp3-558d5459f8508dcd1880508805ad84b4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
