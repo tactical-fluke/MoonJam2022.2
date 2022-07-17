@@ -17,7 +17,7 @@ func _ready():
 	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
 	health.init_health(stat_block.max_health)
 	health.connect("died", self, "handle_death")
-  init_torch()
+	init_torch()
 
 
 # Gets the movement input. Modifies `velocity`
