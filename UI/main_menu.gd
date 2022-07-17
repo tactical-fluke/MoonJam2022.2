@@ -17,7 +17,7 @@ func _on_PlayButton_mouse_exited():
 	$PlayButton.self_modulate.a = 0
 
 func _on_SettingsButton_pressed():
-	print("settings button pressed")
+	add_child(settings_menu.instance())
 
 func _on_SettingsButton_mouse_entered():
 	$SettingsButton.self_modulate.a = 0.3
