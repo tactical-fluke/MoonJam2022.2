@@ -1,16 +1,39 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://enemies/base_enemy.gd" type="Script" id=1]
 [ext_resource path="res://enemies/attack patterns/circle_attack_pattern.gd" type="Script" id=2]
 [ext_resource path="res://enemies/basic_enemy_stat_block.tres" type="Resource" id=3]
+[ext_resource path="res://enemies/Sprites/enemy_idle_1_left.tres" type="Texture" id=4]
+[ext_resource path="res://enemies/Sprites/enemy_idle_2_left.tres" type="Texture" id=5]
+[ext_resource path="res://enemies/Sprites/enemy_idle_2_right.tres" type="Texture" id=6]
+[ext_resource path="res://enemies/Sprites/enemy_idle_1_right.tres" type="Texture" id=7]
+[ext_resource path="res://enemies/Sprites/enemy_death_left.tres" type="Texture" id=8]
+[ext_resource path="res://enemies/Sprites/enemy_death_right.tres" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 1, 0, 0, 1, 0.431373, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "death_right",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "death_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle_right",
+"speed": 2.0
+} ]
 
 [node name="BaseEnemy" type="KinematicBody2D" groups=["Enemy", "projectile handler"]]
 script = ExtResource( 1 )
@@ -20,10 +43,11 @@ attack_pattern = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -9.53674e-07, 0 )
-scale = Vector2( 0.00976562, 20 )
-texture = SubResource( 3 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -7.15256e-07, 4.76837e-07 )
+scale = Vector2( 0.625, 0.625 )
+frames = SubResource( 2 )
+animation = "idle_left"
 
 [node name="FireTimer" type="Timer" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://wall.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://enemies/base_enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://area_trigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://items/Torch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://audio/Main_theme_final_fr_fr_on_god.mp3" type="AudioStream" id=7]
 
 [node name="root" type="Node2D"]
 
@@ -56,3 +57,8 @@ scale = Vector2( 9.6, 1 )
 
 [node name="Torch3" parent="." instance=ExtResource( 6 )]
 position = Vector2( -23, -41 )
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+bus = "Music"

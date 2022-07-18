@@ -43,6 +43,8 @@ func _process(delta):
 			attack_process(delta)
 		EnemyState.FLEE:
 			flee_process(delta)
+	
+	handle_animation()
 
 # Area trigger to put the enemy into fight mode
 func _on_area_trigger_entered_by_player():
@@ -91,3 +93,10 @@ func handle_projectile(projectile, damage):
 
 func handle_death():
 	queue_free()
+	
+func handle_animation():
+	var left = get_direction_to_player().x < 0
+	var anim_suffix = "left" if left else "right"
+	match state:
+		_: #TODO
+			$Sprite.play("idle_%s" % anim_suffix)

@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://item resources/max_speed_add_stat_block.tres" type="Resource" id=1]
 [ext_resource path="res://items/item.gd" type="Script" id=2]
 [ext_resource path="res://item_dynamic_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Textures/pc.png" type="Texture" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 1 )
@@ -25,11 +23,6 @@ script = ExtResource( 2 )
 stat_block = ExtResource( 1 )
 hover_description = "Generic Item"
 extended_description = "Generic Item"
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.00976562, 20 )
@@ -60,6 +53,5 @@ autowrap = true
 texture = ExtResource( 4 )
 offset = Vector2( 10, -15 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_Area2D2_body_exited"]

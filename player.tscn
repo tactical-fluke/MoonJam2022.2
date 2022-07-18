@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://player_stat_block.tres" type="Resource" id=2]
 [ext_resource path="res://Assets/Textures/light.png" type="Texture" id=3]
+[ext_resource path="res://audio/Hurt2.mp3" type="AudioStream" id=4]
+[ext_resource path="res://audio/Hurt1.mp3" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -52,5 +54,13 @@ margin_right = 237.0
 margin_bottom = 573.0
 custom_styles/fg = SubResource( 4 )
 rounded = true
+
+[node name="HurtSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Sound Effects"
+
+[node name="HurtSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Sound Effects"
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
