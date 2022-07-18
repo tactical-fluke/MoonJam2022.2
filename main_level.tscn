@@ -52,6 +52,9 @@ position = Vector2( 777, -1531 )
 [node name="PotionItem" parent="." instance=ExtResource( 5 )]
 position = Vector2( 152, 35 )
 
+[node name="HealthPotion" parent="PotionItem" instance=ExtResource( 10 )]
+position = Vector2( 1625, 510 )
+
 [node name="Chest" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1134, 281 )
 hover_description = "A Chest"
