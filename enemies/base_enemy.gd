@@ -31,7 +31,8 @@ onready var player = get_node("/root/root/Player")
 
 var dead_direction = "left"
 
-var death_timer = Timer.new()
+var rng = RandomNumberGenerator.new()
+var vel_mult = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +40,8 @@ func _ready():
 		_area_trigger.connect("area_entered_by_player", self, "_on_area_trigger_entered_by_player")
 	health.init_health(stat_block.max_health)
 	health.connect("died", self, "handle_death")
+	rng.randomize()
+	vel_mult = rng.randf_range(0.8, 1.5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -81,7 +84,7 @@ func attack_process(delta):
 # move toward the player (and deal damage if a collision with the player occurs)
 func move_to_player(delta):
 	var direction_to_player = get_direction_to_player()
-	velocity = velocity.move_toward(direction_to_player * stat_block.max_speed, stat_block.acceleration)
+	velocity = velocity.move_toward(direction_to_player * stat_block.max_speed * vel_mult, stat_block.acceleration)
 	var collision = move_and_collide(velocity * delta)
 	if collision != null && collision.collider.is_in_group("Player"):
 		collision.collider.take_damage(ceil(stat_block.damage_modifier))
