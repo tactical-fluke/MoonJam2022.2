@@ -15,6 +15,8 @@ var in_range = false
 
 var stay_hidden = false
 
+var interacted_with = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PanelContainer/Label.text = hover_description
@@ -28,16 +30,18 @@ func _process(delta):
 			interacted()
 		
 func interacted():
-	var player_stat_block = player.stat_block
-	player_stat_block.max_health += stat_block.max_health
-	player_stat_block.max_speed += stat_block.max_speed
-	player_stat_block.acceleration += stat_block.acceleration
-	player_stat_block.damage_modifier += stat_block.damage_modifier
-	player_stat_block.fire_cooldown_modifer += stat_block.fire_cooldown_modifer
-	show_extended_description()
-	$Sprite.hide()
-	$PanelContainer.hide()
-	$PickupIcon.hide()
+	if !interacted_with:
+		interacted_with = true
+		var player_stat_block = player.stat_block
+		player_stat_block.max_health += stat_block.max_health
+		player_stat_block.max_speed += stat_block.max_speed
+		player_stat_block.acceleration += stat_block.acceleration
+		player_stat_block.damage_modifier += stat_block.damage_modifier
+		player_stat_block.fire_cooldown_modifer += stat_block.fire_cooldown_modifer
+		show_extended_description()
+		$Sprite.hide()
+		$PanelContainer.hide()
+		$PickupIcon.hide()
 	
 
 func _on_Area2D2_body_entered(body):
