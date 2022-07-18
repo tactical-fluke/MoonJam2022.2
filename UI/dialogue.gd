@@ -34,6 +34,7 @@ func calculate_time_per_character():
 	time_per_character = time_per_line_finish / lines[current_string_index].length()
 
 func _on_NextLineTimer_timeout():
+	emit_signal("line_finished")
 	is_line_finished = false
 	current_string_index += 1
 	if current_string_index >= lines.size():
@@ -46,7 +47,6 @@ func _on_NextLineTimer_timeout():
 	calculate_time_per_character()
 	$NextCharacterTimer.start(time_per_character)
 	$NextLineTimer.start(time_per_line_show)
-	emit_signal("line_finished")
 
 func update_dialogue_box():
 	current_character += 1
