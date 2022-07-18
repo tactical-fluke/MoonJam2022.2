@@ -44,7 +44,8 @@ run/main_scene="res://UI/main_menu.tscn"
 run/disable_stdout=true
 run/disable_stderr=true
 run/flush_stdout_on_print=true
-config/icon="res://icon.png"
+config/icon="res://Assets/Textures/The Plunge Icon.png"
+config/windows_native_icon="res://winicon.ico"
 
 [input]
 
