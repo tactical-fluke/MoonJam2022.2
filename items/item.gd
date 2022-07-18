@@ -38,12 +38,14 @@ func interacted():
 func _on_Area2D2_body_entered(body):
 	if body.is_in_group("Player"):
 		$PanelContainer.show()
+		$PickupIcon.show()
 		in_range = true
 
 
 func _on_Area2D2_body_exited(body):
 	if body.is_in_group("Player"):
 		$PanelContainer.hide()
+		$PickupIcon.hide()
 		in_range = false
 		
 func _set_glyph(data):
