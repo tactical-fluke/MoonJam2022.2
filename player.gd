@@ -20,6 +20,8 @@ var full_heart = preload("res://UI/full_heart.tscn")
 var half_heart = preload("res://UI/half_heart.tscn")
 var empty_heart = preload("res://UI/empty_heart.tscn")
 
+signal player_died
+
 func _ready():
 	init_torch()
 	init_health()
@@ -124,6 +126,7 @@ func _on_FireTimer_timeout():
 
 func handle_death():
 	print("player died")
+	emit_signal("player_died")
 
 func handle_max_health_changed():
 	health.set_health(stat_block.max_health)
