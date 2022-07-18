@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://player_stat_block.tres" type="Resource" id=2]
@@ -13,9 +13,6 @@ colors = PoolColorArray( 1, 0, 0, 1, 0.662745, 0, 1, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.0352941, 0.341176, 0.0431373, 1 )
 
 [node name="Player" type="KinematicBody2D" groups=["Player", "projectile handler"]]
 script = ExtResource( 1 )
@@ -47,13 +44,11 @@ margin_bottom = 2.0
 [node name="CanvasLayer" type="CanvasLayer" parent="Control"]
 layer = 3
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/CanvasLayer"]
-margin_left = 30.0
-margin_top = 523.0
-margin_right = 237.0
-margin_bottom = 573.0
-custom_styles/fg = SubResource( 4 )
-rounded = true
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer"]
+margin_left = 25.0
+margin_top = 502.0
+margin_right = 372.0
+margin_bottom = 576.0
 
 [node name="HurtSound1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

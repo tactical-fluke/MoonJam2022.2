@@ -2,7 +2,7 @@ extends Resource
 
 class_name health_resource
 
-var health = 1 setget set_health
+var health: int = 1 setget set_health
 
 signal died
 

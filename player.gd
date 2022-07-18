@@ -16,6 +16,10 @@ var torch_timer = Timer.new()
 signal controller_signal
 var last_input
 
+var full_heart = preload("res://UI/full_heart.tscn")
+var half_heart = preload("res://UI/half_heart.tscn")
+var empty_heart = preload("res://UI/empty_heart.tscn")
+
 func _ready():
 	init_torch()
 	init_health()
@@ -58,6 +62,7 @@ func _physics_process(delta):
 func _process(delta):
 	if Input.is_action_pressed("fire"):
 		fire()
+	draw_health()
 
 func _input(event):
 	if event is InputEventKey:
@@ -96,7 +101,6 @@ func handle_projectile(projectile, damage):
 
 func take_damage(damage):
 	health.take_damage(damage)
-	$Control/CanvasLayer/ProgressBar.value = health.health
 	if randf() > 0.5:
 		$HurtSound1.play()
 	else:
@@ -123,9 +127,6 @@ func handle_death():
 
 func handle_max_health_changed():
 	health.set_health(stat_block.max_health)
-	$Control/CanvasLayer/ProgressBar.max_value = stat_block.max_health
-	$Control/CanvasLayer/ProgressBar.value = stat_block.max_health
-	
 
 func get_damage_modifer() -> float:
 	var damage_modifier = stat_block.damage_modifier
@@ -160,5 +161,16 @@ func init_health():
 	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
 	health.init_health(stat_block.max_health)
 	health.connect("died", self, "handle_death")
-	$Control/CanvasLayer/ProgressBar.max_value = stat_block.max_health
-	$Control/CanvasLayer/ProgressBar.value = stat_block.max_health
+
+func draw_health():
+	for child in $Control/CanvasLayer/HBoxContainer.get_children():
+		$Control/CanvasLayer/HBoxContainer.remove_child(child)
+	var full_hearts = floor(health.health / 2)
+	var half_hearts = health.health % 2 == 1
+	var empty_hearts = floor((stat_block.max_health - health.health) / 2)
+	for i in range(full_hearts):
+		$Control/CanvasLayer/HBoxContainer.add_child(full_heart.instance())
+	if half_hearts:
+		$Control/CanvasLayer/HBoxContainer.add_child(half_heart.instance())
+	for i in range(empty_hearts):
+		$Control/CanvasLayer/HBoxContainer.add_child(empty_heart.instance())

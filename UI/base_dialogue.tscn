@@ -9,11 +9,10 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 lines = [ "Sir Billy! We need you to venture into the dungeon to release a dangerous prisoner...", "He's the only one who can reverse the curse on our kingdom.", "We only have a plunger available as a weapon...", "Go forth!" ]
 
-[node name="NextLineTimer" type="Timer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
-[node name="NextCharacterTimer" type="Timer" parent="."]
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchor_right = 0.5
 anchor_bottom = 0.45
 margin_left = 58.0
@@ -21,7 +20,7 @@ margin_top = 65.0
 margin_right = -78.0
 margin_bottom = -74.0
 
-[node name="Label" type="Label" parent="PanelContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer"]
 margin_left = 7.0
 margin_top = 58.0
 margin_right = 369.0
@@ -31,6 +30,10 @@ autowrap = true
 [node name="CharacterNoise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "Sound Effects"
+
+[node name="NextLineTimer" type="Timer" parent="."]
+
+[node name="NextCharacterTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="NextLineTimer" to="." method="_on_NextLineTimer_timeout"]
 [connection signal="timeout" from="NextCharacterTimer" to="." method="_on_NextCharacterTimer_timeout"]
