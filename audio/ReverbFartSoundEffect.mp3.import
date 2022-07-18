@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ReverbFartSoundEffect.mp3-f9bbefd580b3212ea9ceb7de87824ba3.mp3str"
+
+[deps]
+
+source_file="res://audio/ReverbFartSoundEffect.mp3"
+dest_files=[ "res://.import/ReverbFartSoundEffect.mp3-f9bbefd580b3212ea9ceb7de87824ba3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
