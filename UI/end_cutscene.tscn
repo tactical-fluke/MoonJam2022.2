@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/cutscene.gd" type="Script" id=1]
 [ext_resource path="res://UI/base_dialogue.tscn" type="PackedScene" id=2]
-[ext_resource path="res://temp textures/main_menu_background_temp.png" type="Texture" id=3]
-[ext_resource path="res://UI/main_menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Textures/DIALOGUEending frame2.png" type="Texture" id=3]
+[ext_resource path="res://UI/final_end_frame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Textures/DIALOGUEending frame1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/DIALOGUEending frame3.png" type="Texture" id=6]
 
 [node name="BaseCutscene" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-slides = [ ExtResource( 3 ) ]
+slides = [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 6 ) ]
 scene_to_load_on_finish = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
