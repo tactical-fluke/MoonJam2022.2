@@ -6,7 +6,8 @@ onready var _area_trigger = get_node(area_trigger)
 enum EnemyState {
 	IDLE,
 	ATTACK,
-	FLEE
+	FLEE,
+	DEAD
 }
 
 export (float) var preferred_attack_distance = 0;
@@ -27,6 +28,8 @@ var health = health_resource.new()
 
 onready var player = get_node("/root/root/Player")
 
+var dead_direction = "left"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if _area_trigger != null:
@@ -43,12 +46,15 @@ func _process(delta):
 			attack_process(delta)
 		EnemyState.FLEE:
 			flee_process(delta)
+		_:
+			pass
 	
 	handle_animation()
 
 # Area trigger to put the enemy into fight mode
 func _on_area_trigger_entered_by_player():
-	state = EnemyState.ATTACK
+	if state != EnemyState.DEAD:
+		state = EnemyState.ATTACK
 
 # Per frame attack process
 func attack_process(delta):
@@ -90,13 +96,19 @@ func _on_FireTimer_timeout():
 func handle_projectile(projectile, damage):
 	projectile.queue_free()
 	health.take_damage(damage)
+	
+func get_side_of_player() -> String:
+	var left = get_direction_to_player().x < 0
+	return "left" if left else "right"
 
 func handle_death():
-	queue_free()
+	state = EnemyState.DEAD
+	dead_direction = get_side_of_player()
 	
 func handle_animation():
-	var left = get_direction_to_player().x < 0
-	var anim_suffix = "left" if left else "right"
+	var anim_suffix = get_side_of_player()
 	match state:
+		EnemyState.DEAD:
+			$Sprite.play("death_%s" % dead_direction)
 		_: #TODO
 			$Sprite.play("idle_%s" % anim_suffix)

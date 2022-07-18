@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource( 1 )
 max_health = 10
-max_speed = 100
+max_speed = 125
 damage_modifier = 1.0
 fire_cooldown_modifer = 1.0
-acceleration = 20.0
+acceleration = 50.0
 fire_type = ExtResource( 2 )

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Textures/empty_heart.tres" type="Texture" id=1]
+
+[node name="EmptyHeart" type="TextureRect"]
+anchor_right = 0.031
+anchor_bottom = 0.053
+margin_right = 0.255999
+margin_bottom = 0.199999
+texture = ExtResource( 1 )

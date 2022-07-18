@@ -14,9 +14,9 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "idle_left",
+"name": "idle_right",
 "speed": 2.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -24,15 +24,15 @@ animations = [ {
 "name": "death_right",
 "speed": 1.0
 }, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 2.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "death_left",
 "speed": 1.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "idle_right",
-"speed": 2.0
 } ]
 
 [node name="BaseEnemy" type="KinematicBody2D" groups=["Enemy", "projectile handler"]]
