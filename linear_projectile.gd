@@ -36,3 +36,6 @@ func handle_collision(collision: KinematicCollision2D):
 		collision.collider.handle_projectile(self, damage)
 	if collision.collider is TileMap: #make sure it disappears when it hits the boundary of the map
 		queue_free()
+		
+func rotate_sprite(angle):
+	$Sprite.rotate(angle)

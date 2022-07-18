@@ -37,6 +37,8 @@ enum Side {
 
 var last_traveled_side = Side.LEFT
 
+var last_fired_dir = Vector2.UP
+
 func _ready():
 	init_torch()
 	init_health()
@@ -106,10 +108,10 @@ func get_fire_direction() -> Vector2:
 	if Input.is_action_pressed("aim_right"):
 		fire_dir.x += 1
 		
-	if fire_dir.is_equal_approx(Vector2.ZERO):
-		return Vector2(0, -1)
-	else:
-		return fire_dir.normalized()
+	if !fire_dir.is_equal_approx(Vector2.ZERO):
+		last_fired_dir = fire_dir.normalized()
+	
+	return last_fired_dir
 
 # handles any projectiles that it does not own colliding with it
 func handle_projectile(projectile, damage):
