@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Textures/light.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Textures/replacemewithtorchorsomething.png" type="Texture" id=2]
 [ext_resource path="res://items/Torch.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Textures/pc.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 47.0106
 
 [node name="Torch" type="Node2D"]
 script = ExtResource( 3 )
@@ -22,4 +26,15 @@ texture = ExtResource( 1 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
+[node name="PickupIcon" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 10, -15 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource( 2 )
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_Area2D2_body_exited"]

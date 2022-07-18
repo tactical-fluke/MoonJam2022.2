@@ -13,12 +13,14 @@ var can_fire = true
 var torch_lit = false
 var torch_timer = Timer.new()
 
+signal controller_signal
+var last_input
+
 func _ready():
 	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
 	health.init_health(stat_block.max_health)
 	health.connect("died", self, "handle_death")
 	init_torch()
-
 
 # Gets the movement input. Modifies `velocity`
 func get_movement_input():
@@ -57,6 +59,18 @@ func _physics_process(delta):
 func _process(delta):
 	if Input.is_action_pressed("fire"):
 		fire()
+
+func _input(event):
+	if event is InputEventKey:
+		last_input = 'kb'
+	if event is InputEventJoypadButton || event is InputEventJoypadMotion:
+		if Input.is_joy_known(0):
+			if Input.get_joy_name(0) == 'XInput Gamepad':
+				last_input = 'xb'
+			if Input.get_joy_name(0) == 'PS5 Controller' || Input.get_joy_name(0) == 'PS4 Controller':
+				last_input = 'ps'
+	emit_signal('controller_signal', last_input)
+	pass
 
 # Gets the median fire direction of the wanted to fire projectile
 func get_fire_direction() -> Vector2:
@@ -120,7 +134,7 @@ func init_torch():
 func toggle_torch(state):
 	if state == 1:
 		torch_lit = true
-		$TorchLight2D.set_visible(true)
+		$TorchLight2D.show()
 		torch_timer.connect("timeout",self,"snuff_torch")
 		torch_timer.wait_time = 3
 		torch_timer.one_shot = true
@@ -128,11 +142,10 @@ func toggle_torch(state):
 		torch_timer.start()		
 	elif state == 0:
 		torch_lit = false
-		$TorchLight2D.set_visible(false)
+		$TorchLight2D.hide()
 		
 func snuff_torch():
-	print("LULE")
 	torch_lit = false
-	$TorchLight2D.set_visible(false)
+	$TorchLight2D.hide()
 	
 

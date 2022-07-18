@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://item resources/max_speed_add_stat_block.tres" type="Resource" id=1]
 [ext_resource path="res://items/item.gd" type="Script" id=2]
 [ext_resource path="res://item_dynamic_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Textures/pc.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -54,6 +55,10 @@ theme = SubResource( 6 )
 text = "Generic Item"
 align = 1
 autowrap = true
+
+[node name="PickupIcon" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 10, -15 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
