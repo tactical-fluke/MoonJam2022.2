@@ -48,7 +48,7 @@ animations = [ {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": false,
 "name": "poof",
-"speed": 2.0
+"speed": 4.0
 } ]
 
 [node name="BaseEnemy" type="KinematicBody2D" groups=["Enemy", "projectile handler"]]
