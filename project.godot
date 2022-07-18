@@ -47,6 +47,11 @@ run/flush_stdout_on_print=true
 config/icon="res://Assets/Textures/The Plunge Icon.png"
 config/windows_native_icon="res://winicon.ico"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+
 [input]
 
 movement_up={

@@ -22,6 +22,21 @@ var empty_heart = preload("res://UI/empty_heart.tscn")
 
 signal player_died
 
+enum TravelState {
+	WALK_UP,
+	WALK_DOWN,
+	WALK_SIDE
+}
+
+var travel_state = TravelState.WALK_DOWN
+
+enum Side {
+	LEFT,
+	RIGHT
+}
+
+var last_traveled_side = Side.LEFT
+
 func _ready():
 	init_torch()
 	init_health()
@@ -65,6 +80,7 @@ func _process(delta):
 	if Input.is_action_pressed("fire"):
 		fire()
 	draw_health()
+	handle_animation()
 
 func _input(event):
 	if event is InputEventKey:
@@ -180,3 +196,28 @@ func draw_health():
 		
 func heal(healing):
 	health.heal(healing, stat_block.max_health)
+
+func handle_animation():
+	var walking = velocity.length_squared() > 0.4
+	if walking &&  abs(velocity.y) > abs(velocity.x): # considered as "walking vertically"
+		travel_state = TravelState.WALK_UP if velocity.y < 0 else TravelState.WALK_DOWN
+	elif walking:
+		travel_state = TravelState.WALK_SIDE
+		
+	if walking:
+		last_traveled_side = Side.LEFT if velocity.x < 0 else Side.RIGHT
+		
+	$Sprite.flip_h = last_traveled_side == Side.RIGHT
+	if walking:
+		$Sprite.play("side_walk")
+	else:
+		match travel_state:
+			TravelState.WALK_DOWN:
+				$Sprite.play("front_idle")
+				pass
+			TravelState.WALK_UP:
+				$Sprite.play("back_idle")
+				pass
+			TravelState.WALK_SIDE:
+				$Sprite.play("side_idle")
+				pass
