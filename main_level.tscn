@@ -39,7 +39,7 @@ scale = Vector2( 0.926263, 12.0427 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+[node name="Music" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
