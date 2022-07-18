@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://items/glasses_stat_block.tres" type="Resource" id=1]
+[ext_resource path="res://items/item.gd" type="Script" id=2]
+[ext_resource path="res://item_dynamic_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Textures/pc.png" type="Texture" id=4]
+[ext_resource path="res://UI/base_dialogue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Textures/glasses.tres" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 47.0106
+
+[sub_resource type="Theme" id=6]
+default_font = ExtResource( 3 )
+
+[node name="Item" type="Node2D"]
+z_index = 1
+script = ExtResource( 2 )
+stat_block = ExtResource( 1 )
+hover_description = "Reading Glasses"
+extended_description = "They're crusty and smudged all over.."
+
+[node name="Control" type="Control" parent="."]
+margin_left = 281.0
+margin_top = 424.0
+margin_right = 946.0
+margin_bottom = 821.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="Dialogue" parent="Control/CanvasLayer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 281.0
+margin_top = 424.0
+margin_right = 1158.0
+margin_bottom = 897.0
+lines = [ "REPLACE ME" ]
+time_per_line_finish = 1.0
+time_per_line_show = 2.0
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 6 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource( 5 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = -59.0
+margin_top = -71.0
+margin_right = 59.0
+margin_bottom = -24.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 16.0
+margin_right = 111.0
+margin_bottom = 31.0
+theme = SubResource( 6 )
+text = "Generic Item"
+align = 1
+autowrap = true
+
+[node name="PickupIcon" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 10, -15 )
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_Area2D2_body_exited"]
