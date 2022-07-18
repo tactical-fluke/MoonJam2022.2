@@ -97,6 +97,10 @@ func handle_projectile(projectile, damage):
 func take_damage(damage):
 	health.take_damage(damage)
 	$Control/CanvasLayer/ProgressBar.value = health.health
+	if randf() > 0.5:
+		$HurtSound1.play()
+	else:
+		$HurtSound2.play()
 
 # Fires, using whichever firetype is currently equipped
 func fire():

@@ -40,6 +40,10 @@ _global_script_class_icons={
 
 config/name="The Plunge"
 config/description="The MoonMoon Game Jam 2022 H2 entry from team \"Some Thoughts, Head Mostly Empty\""
+run/main_scene="res://UI/main_menu.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
+run/flush_stdout_on_print=true
 config/icon="res://icon.png"
 
 [input]

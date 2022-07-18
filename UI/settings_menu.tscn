@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/settings_menu.gd" type="Script" id=1]
-[ext_resource path="res://temp music/brainstorming5.mp3" type="AudioStream" id=2]
 [ext_resource path="res://temp music/Item_collect.mp3" type="AudioStream" id=3]
 
 [node name="SettIngs menu" type="Control"]
@@ -113,11 +112,6 @@ margin_top = 138.0
 margin_right = 214.0
 margin_bottom = 158.0
 text = "Back"
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-autoplay = true
-bus = "Music"
 
 [node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

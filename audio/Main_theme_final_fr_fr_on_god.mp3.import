@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Main_theme_final_fr_fr_on_god.mp3-2fa847a42b6e4fbfba06f46ff3378cae.mp3str"
+
+[deps]
+
+source_file="res://audio/Main_theme_final_fr_fr_on_god.mp3"
+dest_files=[ "res://.import/Main_theme_final_fr_fr_on_god.mp3-2fa847a42b6e4fbfba06f46ff3378cae.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
