@@ -1,7 +1,7 @@
 extends Control
 
 export (Array, String) var lines = []
-export (float) var time_per_line_finish = 3
+export (float) var time_per_line_finish = .3
 export (float) var time_per_line_show = 5
 
 var current_string_index = 0
