@@ -15,24 +15,24 @@ start_scene = ExtResource( 6 )
 settings_menu = ExtResource( 3 )
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="PlayButton" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0.215686 )
-margin_left = 474.0
-margin_top = 179.0
-margin_right = 622.0
-margin_bottom = 238.0
+margin_left = 874.0
+margin_top = 319.0
+margin_right = 1169.0
+margin_bottom = 433.0
 
 [node name="SettingsButton" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0.215686 )
-margin_left = 480.0
-margin_top = 256.0
-margin_right = 646.0
-margin_bottom = 334.0
+margin_left = 894.0
+margin_top = 469.0
+margin_right = 1205.0
+margin_bottom = 604.0
 
 [node name="MouseNoise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

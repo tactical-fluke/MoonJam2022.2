@@ -13,7 +13,7 @@ slides = [ ExtResource( 3 ) ]
 scene_to_load_on_finish = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 
 [node name="Dialogue" parent="." instance=ExtResource( 2 )]

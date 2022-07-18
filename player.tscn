@@ -76,9 +76,9 @@ layer = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer"]
 margin_left = 25.0
-margin_top = 502.0
-margin_right = 372.0
-margin_bottom = 576.0
+margin_top = 942.0
+margin_right = 419.0
+margin_bottom = 1016.0
 
 [node name="HurtSound1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
