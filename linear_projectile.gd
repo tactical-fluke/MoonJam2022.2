@@ -34,5 +34,5 @@ func set_owner(new_owner):
 func handle_collision(collision: KinematicCollision2D):
 	if collision.collider_id != projectile_owner.get_instance_id() && collision.collider.is_in_group("projectile handler"):
 		collision.collider.handle_projectile(self, damage)
-	if collision.collider is TileMap:
+	if collision.collider is TileMap: #make sure it disappears when it hits the boundary of the map
 		queue_free()
