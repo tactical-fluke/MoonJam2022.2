@@ -14,10 +14,9 @@ var torch_lit = false
 var torch_timer = Timer.new()
 
 func _ready():
-	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
-	health.init_health(stat_block.max_health)
-	health.connect("died", self, "handle_death")
 	init_torch()
+	init_health()
+	$Control.show()
 
 
 # Gets the movement input. Modifies `velocity`
@@ -83,6 +82,7 @@ func handle_projectile(projectile, damage):
 
 func take_damage(damage):
 	health.take_damage(damage)
+	$Control/CanvasLayer/ProgressBar.value = health.health
 
 # Fires, using whichever firetype is currently equipped
 func fire():
@@ -105,6 +105,9 @@ func handle_death():
 
 func handle_max_health_changed():
 	health.set_health(stat_block.max_health)
+	$Control/CanvasLayer/ProgressBar.max_value = stat_block.max_health
+	$Control/CanvasLayer/ProgressBar.value = stat_block.max_health
+	
 
 func get_damage_modifer() -> float:
 	var damage_modifier = stat_block.damage_modifier
@@ -136,3 +139,9 @@ func snuff_torch():
 	$TorchLight2D.set_visible(false)
 	
 
+func init_health():
+	stat_block.connect("max_health_changed", self, "handle_max_health_changed")
+	health.init_health(stat_block.max_health)
+	health.connect("died", self, "handle_death")
+	$Control/CanvasLayer/ProgressBar.max_value = stat_block.max_health
+	$Control/CanvasLayer/ProgressBar.value = stat_block.max_health
