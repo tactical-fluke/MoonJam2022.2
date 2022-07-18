@@ -193,7 +193,8 @@ func draw_health():
 		$Control/CanvasLayer/HBoxContainer.add_child(half_heart.instance())
 	for i in range(empty_hearts):
 		$Control/CanvasLayer/HBoxContainer.add_child(empty_heart.instance())
-		
+
+
 func heal(healing):
 	health.heal(healing, stat_block.max_health)
 

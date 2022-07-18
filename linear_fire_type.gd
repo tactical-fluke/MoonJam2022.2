@@ -34,7 +34,7 @@ func begin_fire(median_dir: Vector2, owner, world_owner, damage_modifer: float):
 # instantiates the projectile
 func fire(velocity, owner, world_owner, damage_modifier: float):
 	var projectile = projectile_type.instance()
-	projectile.transform = owner.transform.translated(velocity.normalized() * dist_to_spawn_away)
+	projectile.transform = owner.transform.rotated(velocity.angle()).translated(velocity.normalized() * dist_to_spawn_away)
 	world_owner.add_child(projectile)
 	projectile.set_velocity(velocity * projectile_speed_modifier)
 	projectile.set_owner(owner)
