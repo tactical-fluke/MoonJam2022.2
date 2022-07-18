@@ -3,14 +3,14 @@
 [ext_resource path="res://UI/cutscene.gd" type="Script" id=1]
 [ext_resource path="res://UI/base_dialogue.tscn" type="PackedScene" id=2]
 [ext_resource path="res://temp textures/main_menu_background_temp.png" type="Texture" id=3]
-[ext_resource path="res://main_level.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/main_menu.tscn" type="PackedScene" id=4]
 
 [node name="BaseCutscene" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 slides = [ ExtResource( 3 ) ]
-scene_to_load_on_finish = ExtResource( 7 )
+scene_to_load_on_finish = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1920.0
