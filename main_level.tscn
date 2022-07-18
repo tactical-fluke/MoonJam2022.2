@@ -68,32 +68,41 @@ scale = Vector2( 11.2851, 2.0134 )
 
 [node name="BaseEnemy" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 992, -1159 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy2" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 901, -1477 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy6" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 1026, -1567 )
 
 [node name="BaseEnemy7" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 1222, -1546 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy8" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 1289, -1439 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy10" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 1164, -1810 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy9" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 1032, -1821 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy3" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 1318, -1238 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy4" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 1215, -1165 )
+area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy5" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 923, -1256 )
+area_trigger = NodePath("../Area2D")
 
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
