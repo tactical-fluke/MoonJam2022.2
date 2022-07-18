@@ -10,7 +10,6 @@ var current_slide = 0
 
 func _ready():
 	$TextureRect.texture = slides[0]
-	#$Timer.start(time_per_slide)
 	$Dialogue.connect("line_finished", self, "progress_to_next_slide")
 	$Dialogue.start_dialogue()
 
@@ -21,7 +20,6 @@ func progress_to_next_slide():
 		return
 	
 	$TextureRect.texture = slides[current_slide]
-	$Timer.start(time_per_slide)
 
 func _on_Timer_timeout():
 	progress_to_next_slide()

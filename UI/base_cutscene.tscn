@@ -17,8 +17,4 @@ scene_to_load_on_finish = ExtResource( 7 )
 margin_right = 1024.0
 margin_bottom = 600.0
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="Dialogue" parent="." instance=ExtResource( 2 )]
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
