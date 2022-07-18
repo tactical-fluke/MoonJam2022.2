@@ -163,7 +163,7 @@ func toggle_torch(state):
 		torch_lit = true
 		$TorchLight2D.show()
 		torch_timer.connect("timeout",self,"snuff_torch")
-		torch_timer.wait_time = 3
+		torch_timer.wait_time = 10
 		torch_timer.one_shot = true
 		add_child(torch_timer)
 		torch_timer.start()		

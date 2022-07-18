@@ -7,7 +7,8 @@ enum EnemyState {
 	IDLE,
 	ATTACK,
 	FLEE,
-	DEAD
+	DEAD,
+	POOF
 }
 
 export (float) var preferred_attack_distance = 0;
@@ -29,6 +30,8 @@ var health = health_resource.new()
 onready var player = get_node("/root/root/Player")
 
 var dead_direction = "left"
+
+var death_timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -104,6 +107,11 @@ func get_side_of_player() -> String:
 func handle_death():
 	state = EnemyState.DEAD
 	dead_direction = get_side_of_player()
+	death_timer.connect("timeout",self,"ppPoof")
+	death_timer.wait_time = 3
+	death_timer.one_shot = true
+	add_child(death_timer)
+	death_timer.start()		
 	
 func handle_animation():
 	var anim_suffix = get_side_of_player()
@@ -112,3 +120,9 @@ func handle_animation():
 			$Sprite.play("death_%s" % dead_direction)
 		_: #TODO
 			$Sprite.play("idle_%s" % anim_suffix)
+
+func ppPoof():
+	state = EnemyState.POOF
+	$Sprite.play("poof")
+	hide()
+	queue_free()
