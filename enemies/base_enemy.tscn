@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://enemies/base_enemy.gd" type="Script" id=1]
 [ext_resource path="res://enemies/attack patterns/circle_attack_pattern.gd" type="Script" id=2]
@@ -9,8 +9,19 @@
 [ext_resource path="res://enemies/Sprites/enemy_idle_1_right.tres" type="Texture" id=7]
 [ext_resource path="res://enemies/Sprites/enemy_death_left.tres" type="Texture" id=8]
 [ext_resource path="res://enemies/Sprites/enemy_death_right.tres" type="Texture" id=9]
+[ext_resource path="res://temp textures/lightzone and darkzone tiles.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 832, 192, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 864, 192, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -24,15 +35,20 @@ animations = [ {
 "name": "death_right",
 "speed": 1.0
 }, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "death_left",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "idle_left",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "death_left",
-"speed": 1.0
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "poof",
+"speed": 2.0
 } ]
 
 [node name="BaseEnemy" type="KinematicBody2D" groups=["Enemy", "projectile handler"]]
@@ -47,8 +63,9 @@ shape = SubResource( 1 )
 position = Vector2( -7.15256e-07, 4.76837e-07 )
 scale = Vector2( 0.625, 0.625 )
 frames = SubResource( 2 )
-animation = "idle_left"
+animation = "poof"
 
 [node name="FireTimer" type="Timer" parent="."]
 
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
