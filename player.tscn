@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://player_stat_block.tres" type="Resource" id=2]
@@ -11,6 +11,9 @@ colors = PoolColorArray( 1, 0, 0, 1, 0.662745, 0, 1, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0352941, 0.341176, 0.0431373, 1 )
 
 [node name="Player" type="KinematicBody2D" groups=["Player", "projectile handler"]]
 script = ExtResource( 1 )
@@ -32,5 +35,22 @@ zoom = Vector2( 0.5, 0.5 )
 
 [node name="TorchLight2D" type="Light2D" parent="."]
 texture = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/CanvasLayer"]
+margin_left = 30.0
+margin_top = 523.0
+margin_right = 237.0
+margin_bottom = 573.0
+custom_styles/fg = SubResource( 4 )
+rounded = true
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
