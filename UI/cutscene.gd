@@ -10,11 +10,9 @@ var current_slide = 0
 
 func _ready():
 	$TextureRect.texture = slides[0]
-	$Timer.start(time_per_slide)
-
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		progress_to_next_slide()
+	#$Timer.start(time_per_slide)
+	$Dialogue.connect("line_finished", self, "progress_to_next_slide")
+	$Dialogue.start_dialogue()
 
 func progress_to_next_slide():
 	current_slide += 1
@@ -30,5 +28,5 @@ func _on_Timer_timeout():
 	
 func on_cutscene_finished():
 	emit_signal("cutscene_finished")
-	if scene_to_load_on_finish != null && scene_to_load_on_finish != "":
+	if scene_to_load_on_finish != null:
 		get_tree().change_scene_to(scene_to_load_on_finish)

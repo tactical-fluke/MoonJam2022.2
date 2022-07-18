@@ -12,6 +12,10 @@ export (int) var damage = 4 ## INTERFACE TYPE
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("linear projectile created")
+	if randf() < 0.5:
+		$AttackNoise1.play()
+	else:
+		$AttackNoise2.play()
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
@@ -30,3 +34,5 @@ func set_owner(new_owner):
 func handle_collision(collision: KinematicCollision2D):
 	if collision.collider_id != projectile_owner.get_instance_id() && collision.collider.is_in_group("projectile handler"):
 		collision.collider.handle_projectile(self, damage)
+	if collision.collider is TileMap:
+		queue_free()

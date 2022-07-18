@@ -14,21 +14,25 @@ var is_line_finished = false
 
 signal line_finished
 
+var is_running = false
+
 func _ready():
 	hide()
 	
 func start_dialogue():
+	is_running = true
 	show()
 	$NextLineTimer.start(time_per_line_show)
 	calculate_time_per_character()
 	$NextCharacterTimer.start(time_per_character)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		if is_line_finished:
-			_on_NextLineTimer_timeout()
-		else:
-			finish_line()
+	if is_running:
+		if Input.is_action_just_pressed("ui_accept"):
+			if is_line_finished:
+				_on_NextLineTimer_timeout()
+			else:
+				finish_line()
 	
 func calculate_time_per_character():
 	time_per_character = time_per_line_finish / lines[current_string_index].length()

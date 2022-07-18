@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://linear_projectile.gd" type="Script" id=1]
+[ext_resource path="res://audio/Attack1.mp3" type="AudioStream" id=2]
+[ext_resource path="res://audio/Attack2.mp3" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -20,3 +22,11 @@ shape = SubResource( 1 )
 position = Vector2( -5.72205e-06, 0 )
 scale = Vector2( 0.00683593, 14 )
 texture = SubResource( 3 )
+
+[node name="AttackNoise1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Sound Effects"
+
+[node name="AttackNoise2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Sound Effects"
