@@ -1,7 +1,6 @@
 extends Control
 
 export (Array, Texture) var slides
-export (float) var time_per_slide
 export (PackedScene) var scene_to_load_on_finish
 
 signal cutscene_finished
