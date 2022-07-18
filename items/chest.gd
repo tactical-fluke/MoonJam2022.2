@@ -16,6 +16,8 @@ var in_range = false
 
 var stay_hidden = false
 
+var interacted_with = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.texture = chest_closed_image
@@ -30,11 +32,13 @@ func _process(delta):
 			interacted()
 		
 func interacted():
-	$PunchlineTimer.start()
-	$Sprite.texture = chest_open_image
-	$ChestOpenNoise.play()
-	$PanelContainer.hide()
-	$PickupIcon.hide()
+	if !interacted_with:
+		interacted_with = true 
+		$PunchlineTimer.start()
+		$Sprite.texture = chest_open_image
+		$ChestOpenNoise.play()
+		$PanelContainer.hide()
+		$PickupIcon.hide()
 	
 
 func _on_Area2D2_body_entered(body):

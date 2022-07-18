@@ -1,16 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://items/small_damage_buff_stat_block.tres" type="Resource" id=1]
 [ext_resource path="res://items/item.gd" type="Script" id=2]
 [ext_resource path="res://item_dynamic_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Textures/pc.png" type="Texture" id=4]
 [ext_resource path="res://UI/base_dialogue.tscn" type="PackedScene" id=5]
-
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[ext_resource path="res://Assets/Textures/scabbard.tres" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 47.0106
@@ -43,8 +38,9 @@ margin_bottom = 897.0
 lines = [ "REPLACE ME" ]
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.00976562, 20 )
-texture = SubResource( 3 )
+position = Vector2( -1.19209e-07, -1.52588e-05 )
+scale = Vector2( 0.625, 0.625 )
+texture = ExtResource( 6 )
 
 [node name="Area2D2" type="Area2D" parent="."]
 

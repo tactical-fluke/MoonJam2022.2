@@ -17,11 +17,11 @@ signal line_finished
 var is_running = false
 
 func _ready():
-	hide()
+	$CanvasLayer/PanelContainer.hide()
 	
 func start_dialogue():
 	is_running = true
-	show()
+	$CanvasLayer/PanelContainer.show()
 	$NextLineTimer.start(time_per_line_show)
 	calculate_time_per_character()
 	$NextCharacterTimer.start(time_per_character)
@@ -47,7 +47,7 @@ func _on_NextLineTimer_timeout():
 	
 	currently_shown_string = ""
 	current_character = 0
-	$PanelContainer/Label.text = currently_shown_string
+	$CanvasLayer/PanelContainer/Label.text = currently_shown_string
 	calculate_time_per_character()
 	$NextCharacterTimer.start(time_per_character)
 	$NextLineTimer.start(time_per_line_show)
@@ -59,7 +59,7 @@ func update_dialogue_box():
 		is_line_finished = true
 		return
 	currently_shown_string = lines[current_string_index].substr(0, current_character)
-	$PanelContainer/Label.text = currently_shown_string
+	$CanvasLayer/PanelContainer/Label.text = currently_shown_string
 	if currently_shown_string[currently_shown_string.length() - 1] != ' ':
 		$CharacterNoise.play()
 	
