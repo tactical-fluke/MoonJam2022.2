@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://items/max_speed_add_stat_block.tres" type="Resource" id=1]
+[ext_resource path="res://items/small_damage_buff_stat_block.tres" type="Resource" id=1]
 [ext_resource path="res://items/item.gd" type="Script" id=2]
 [ext_resource path="res://item_dynamic_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Textures/pc.png" type="Texture" id=4]
@@ -22,8 +22,8 @@ default_font = ExtResource( 3 )
 z_index = 1
 script = ExtResource( 2 )
 stat_block = ExtResource( 1 )
-hover_description = "Potion"
-extended_description = "...It's empty. Did somebody drink it all?"
+hover_description = "Greatest Sword in the Realm"
+extended_description = "Just the scabbard. The sword must be somewhere else... (+15% damage)"
 
 [node name="Control" type="Control" parent="."]
 margin_left = 281.0
@@ -41,8 +41,6 @@ margin_top = 424.0
 margin_right = 1158.0
 margin_bottom = 897.0
 lines = [ "REPLACE ME" ]
-time_per_line_finish = 1.0
-time_per_line_show = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.00976562, 20 )

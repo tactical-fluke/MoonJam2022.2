@@ -1,14 +1,13 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://stat_block.gd" type="Script" id=1]
-[ext_resource path="res://linear_shotgun_fire_type.tres" type="Resource" id=2]
+[ext_resource path="res://single_linear_fire_type.tres" type="Resource" id=2]
 
 [resource]
 script = ExtResource( 1 )
 max_health = 20
-current_health = 20
 max_speed = 150
-damage_multiplier = 1.0
+damage_modifier = 1.0
 fire_cooldown_modifer = 1.0
 acceleration = 50.0
 fire_type = ExtResource( 2 )
