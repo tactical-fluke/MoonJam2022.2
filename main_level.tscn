@@ -56,7 +56,12 @@ position = Vector2( 152, 35 )
 position = Vector2( 1625, 510 )
 
 [node name="Chest" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1134, 281 )
+position = Vector2( 576, 1201 )
+hover_description = "A Chest"
+extended_description = "It's empty..."
+
+[node name="Chest2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1903, 769 )
 hover_description = "A Chest"
 extended_description = "It's empty..."
 
@@ -106,6 +111,50 @@ area_trigger = NodePath("../Area2D")
 
 [node name="BaseEnemy5" parent="Room 2" instance=ExtResource( 8 )]
 position = Vector2( 923, -1256 )
+area_trigger = NodePath("../Area2D")
+
+[node name="Room 3" type="Node" parent="."]
+
+[node name="Area2D" parent="Room 3" instance=ExtResource( 9 )]
+position = Vector2( 554, 817 )
+scale = Vector2( 13.2, 1.6 )
+
+[node name="BaseEnemy" parent="Room 3" instance=ExtResource( 8 )]
+position = Vector2( 256, 1214 )
+area_trigger = NodePath("../Area2D")
+
+[node name="BaseEnemy2" parent="Room 3" instance=ExtResource( 8 )]
+position = Vector2( 609, 1437 )
+area_trigger = NodePath("../Area2D")
+
+[node name="BaseEnemy3" parent="Room 3" instance=ExtResource( 8 )]
+position = Vector2( 773, 1052 )
+area_trigger = NodePath("../Area2D")
+
+[node name="BaseEnemy4" parent="Room 3" instance=ExtResource( 8 )]
+position = Vector2( 1027, 1367 )
+area_trigger = NodePath("../Area2D")
+
+[node name="Room 4" type="Node" parent="."]
+
+[node name="Area2D" parent="Room 4" instance=ExtResource( 9 )]
+position = Vector2( 1440, 546 )
+scale = Vector2( 3.40518, 81.1868 )
+
+[node name="BaseEnemy" parent="Room 4" instance=ExtResource( 8 )]
+position = Vector2( 1704, 275 )
+area_trigger = NodePath("../Area2D")
+
+[node name="BaseEnemy2" parent="Room 4" instance=ExtResource( 8 )]
+position = Vector2( 1775, 919 )
+area_trigger = NodePath("../Area2D")
+
+[node name="BaseEnemy3" parent="Room 4" instance=ExtResource( 8 )]
+position = Vector2( 1613, 532 )
+area_trigger = NodePath("../Area2D")
+
+[node name="BaseEnemy4" parent="Room 4" instance=ExtResource( 8 )]
+position = Vector2( 1629, 749 )
 area_trigger = NodePath("../Area2D")
 
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
