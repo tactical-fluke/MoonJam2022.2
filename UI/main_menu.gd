@@ -26,3 +26,11 @@ func _on_SettingsButton_mouse_entered():
 
 func _on_SettingsButton_mouse_exited():
 	$SettingsButton.self_modulate.a = 0
+
+
+func _on_QuitButton_mouse_entered():
+	$MouseNoise.play()
+
+
+func _on_QuitButton_pressed():
+	get_tree().quit()
